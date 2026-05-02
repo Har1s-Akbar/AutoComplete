@@ -2,6 +2,7 @@
 #define AVLTree_hpp
 #include "Node.hpp"
 
+#include <iostream>
 #include <string>
 #include <algorithm>
 
@@ -55,8 +56,46 @@ class AVL{
         return x;
     };
 
+    Node* insertHandler(Node* node, std::string word){
+        if(node == nullptr){
+            return new Node(word);
+        };
+
+        if(word>node->word){
+            node->right = insertHandler(node->right, word);
+        }else if(word<node->word){
+            node->left = insertHandler(node->left,word);
+        }else{
+            std::cout<<"\nkey already exists\n";
+            return node;
+        };
+
+        updateHeight(node);
+        int balance = getHeight(node);
+
+        if(balance>1 && word<node->left->word){
+            return rotateLeft(node);
+        };
+        if(balance <-1 && word> node->right->word){
+            return rotateRight(node);
+        };
+        if(balance >1 && word>node->left->word){
+            node->left = rotateLeft(node->left);
+            return rotateRight(node);
+        };
+        if(balance <-1 && word >node->right->word){
+            node->right = rotateRight(node->right);
+            return rotateLeft(node);
+        }
+
+        return node;
+
+    };
 
     public:
+    void insert(std::string key){
+        root = insertHandler(root, key);
+    };
 };
 
 
