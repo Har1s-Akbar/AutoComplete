@@ -71,19 +71,19 @@ class AVL{
         };
 
         updateHeight(node);
-        int balance = getHeight(node);
+        int balance = getBalance(node);
 
         if(balance>1 && word<node->left->word){
-            return rotateLeft(node);
+            return rotateRight(node);
         };
         if(balance <-1 && word> node->right->word){
-            return rotateRight(node);
+            return rotateLeft(node);
         };
         if(balance >1 && word>node->left->word){
             node->left = rotateLeft(node->left);
             return rotateRight(node);
         };
-        if(balance <-1 && word >node->right->word){
+        if(balance <-1 && word < node->right->word){
             node->right = rotateRight(node->right);
             return rotateLeft(node);
         }
