@@ -1,0 +1,3 @@
+D:/Uni/AutoComplete/build/CMakeFiles/AutocompleteApp.dir
+D:/Uni/AutoComplete/build/CMakeFiles/edit_cache.dir
+D:/Uni/AutoComplete/build/CMakeFiles/rebuild_cache.dir

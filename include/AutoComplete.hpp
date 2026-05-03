@@ -10,11 +10,11 @@
 class AutoComplete{
     private:
         AVL tree;
-        int wordCount;
+        int wordCount =0;
     public:
     bool loadDictionary(const std::string & filename);
 
-    std::vector<std::string> getSuggestions(const std::string prefix);
+    std::vector<std::string> getSuggestions(const std::string& prefix);
 
     int getWordCount() const {return wordCount;};
 };
