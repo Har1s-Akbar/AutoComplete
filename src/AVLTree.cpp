@@ -41,21 +41,21 @@ AVL::AVL():root(nullptr){}
         return x;
     };
 
-    Node* AVL::rotateLeft(Node* y){
-        Node* x = y->right;
-        Node* z = x->left;
+    Node* AVL::rotateLeft(Node* x){
+        Node* y = x->right;
+        Node* z = y->left;
 
-        x->left = y;
-        y->right = z;
+        y->left = x;
+        x->right = z;
 
-        updateHeight(y);
         updateHeight(x);
+        updateHeight(y);
 
-        return x;
+        return y;
     };
 
     Node* AVL::insertHandler(Node* node, std::string word){
-        std::cout<<"\nInserting: "<<word<<"\n";
+        // std::cout<<"\nInserting: "<<word<<"\n";
         if(node == nullptr){
             return new Node(word);
         };
@@ -93,7 +93,7 @@ AVL::AVL():root(nullptr){}
 
     void AVL::searcHandler(Node* root, std::string prefix, int length,std::vector <std::string>& searchList){
         if(root !=nullptr){
-            if(prefix == root->word.substr(0,length)){
+            if(root->word.length() >= length && prefix == root->word.substr(0,length)){
                 searcHandler(root->left,prefix,length,searchList);
                 searchList.push_back(root->word);
                 searcHandler(root->right,prefix,length,searchList);
