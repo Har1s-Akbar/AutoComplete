@@ -7,7 +7,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-f040eec181a89de70dbe.json",
+					"jsonFile" : "directory-.-Debug-f040eec181a89de70dbe.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -20,7 +20,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -40,7 +40,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "AutocompleteApp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-AutocompleteApp-8485f6a2a3b6e65d09dd.json",
+					"jsonFile" : "target-AutocompleteApp-Debug-9c629c98a9fc4dbc2b14.json",
 					"name" : "AutocompleteApp",
 					"projectIndex" : 0
 				}

@@ -32,11 +32,9 @@ AVL::AVL():root(nullptr){}
     Node* x = y->left;
     Node* T2 = x->right; // The "Inner" child
 
-    // Perform rotation
     x->right = y;
     y->left = T2;
 
-    // Update heights - ORDER MATTERS (Child first, then new root)
     updateHeight(y);
     updateHeight(x);
 
@@ -45,13 +43,11 @@ AVL::AVL():root(nullptr){}
 
     Node* AVL::rotateLeft(Node* x) {
     Node* y = x->right;
-    Node* T2 = y->left; // The "Inner" child
+    Node* T2 = y->left;
 
-    // Perform rotation
     y->left = x;
     x->right = T2;
 
-    // Update heights - ORDER MATTERS
     updateHeight(x);
     updateHeight(y);
 
