@@ -116,6 +116,9 @@ class AVL{
     std::vector <std::string> search(std::string prefix){
         int length = prefix.length();
         std::vector <std::string> searchList ={};
+        if(prefix.empty()){
+            return searchList;
+        }
         searcHandler(root, prefix, length, searchList);
         return searchList;
     };
