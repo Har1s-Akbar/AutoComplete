@@ -2,13 +2,14 @@
 #define AVLTree_hpp
 #include "Node.hpp"
 
+#include <vector>
 #include <iostream>
 #include <string>
 #include <algorithm>
 
 class AVL{
     private:
-    Node* root;
+    Node* root = nullptr;
     int getHeight(Node* node){
         if(node != nullptr){
             return node->height;
@@ -92,10 +93,33 @@ class AVL{
 
     };
 
+    void searcHandler(Node* root, std::string prefix, int length,std::vector <std::string>& searchList){
+        if(root !=nullptr){
+            if(prefix == root->word.substr(0,length)){
+                searcHandler(root->left,prefix,length,searchList);
+                searchList.push_back(root->word);
+                searcHandler(root->right,prefix,length,searchList);
+            }
+            else if(prefix > root->word.substr(0,length)){
+                searcHandler(root->right,prefix,length,searchList);
+            }else{
+                searcHandler(root->left,prefix,length,searchList);
+            }
+        }
+    };
+
     public:
     void insert(std::string key){
         root = insertHandler(root, key);
     };
+
+    std::vector <std::string> search(std::string prefix){
+        int length = prefix.length();
+        std::vector <std::string> searchList ={};
+        searcHandler(root, prefix, length, searchList);
+        return searchList;
+    };
+
 };
 
 
