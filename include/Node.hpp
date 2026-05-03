@@ -10,7 +10,7 @@ struct Node{
     int height;
 
 
-    Node(std::string data): word(word), left(nullptr),right(nullptr),height(1){};
+    Node(std::string data): word(data), left(nullptr),right(nullptr),height(1){};
 };
 
 #endif

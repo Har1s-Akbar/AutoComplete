@@ -28,31 +28,35 @@ AVL::AVL():root(nullptr){}
         return getHeight(node->left)-getHeight(node->right);
     };
 
-    Node* AVL::rotateRight(Node* y){
-        Node* x = y->left;
-        Node* z = x->right;
+    Node* AVL::rotateRight(Node* y) {
+    Node* x = y->left;
+    Node* T2 = x->right; // The "Inner" child
 
-        x->right = y;
-        y->left= z;
+    // Perform rotation
+    x->right = y;
+    y->left = T2;
 
-        updateHeight(y);
-        updateHeight(x);
+    // Update heights - ORDER MATTERS (Child first, then new root)
+    updateHeight(y);
+    updateHeight(x);
 
-        return x;
-    };
+    return x;
+}
 
-    Node* AVL::rotateLeft(Node* x){
-        Node* y = x->right;
-        Node* z = y->left;
+    Node* AVL::rotateLeft(Node* x) {
+    Node* y = x->right;
+    Node* T2 = y->left; // The "Inner" child
 
-        y->left = x;
-        x->right = z;
+    // Perform rotation
+    y->left = x;
+    x->right = T2;
 
-        updateHeight(x);
-        updateHeight(y);
+    // Update heights - ORDER MATTERS
+    updateHeight(x);
+    updateHeight(y);
 
-        return y;
-    };
+    return y;
+}
 
     Node* AVL::insertHandler(Node* node, std::string word){
         // std::cout<<"\nInserting: "<<word<<"\n";
