@@ -9,17 +9,16 @@ AVL::AVL():root(nullptr){}
     
     
     int AVL::getHeight(Node* node){
-        if(node != nullptr){
-            return node->height;
-        }else{
-            return 0;
-        }
+    if(node== nullptr) return 0;
+    return node->height;
     };
 
     void AVL::updateHeight(Node* node){
+
         if(node!= nullptr){
             node->height = 1 + std::max(getHeight(node->left), getHeight(node->right));
-        }
+        };
+
     };
 
     int AVL::getBalance(Node* node){
@@ -56,6 +55,7 @@ AVL::AVL():root(nullptr){}
     };
 
     Node* AVL::insertHandler(Node* node, std::string word){
+        std::cout<<"\nInserting: "<<word<<"\n";
         if(node == nullptr){
             return new Node(word);
         };
